@@ -2,12 +2,17 @@ spring:
   application:
     name: Produtos API
   datasource:
-    url: jdbc:h2:produtos
+    url: jdbc:h2:mem:produtos
     username: sa
     password: password
   jpa:
-    database-platform: org.hibernate.dialect.H2ialect
+    database-platform: org.hibernate.dialect.H2Dialect
+    shows-sql: true
+    defer-datasource-iniatilization: true
   h2:
     console:
-      enabled: true
+      enabled: true # Permite enxergar o DB no localhost especificado.
       path: /h2-console
+  sql:
+    init:
+      mode: always # Mostra para o Spring sempre acessar o .sql files do projeto
