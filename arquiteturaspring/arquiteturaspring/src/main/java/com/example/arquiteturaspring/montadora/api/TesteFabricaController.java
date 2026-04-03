@@ -5,6 +5,7 @@ import com.example.arquiteturaspring.montadora.Chave;
 import com.example.arquiteturaspring.montadora.HondaHRV;
 import com.example.arquiteturaspring.montadora.Motor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TesteFabricaController {
 
     @Autowired // Auto-gestão do Spring com container e dependências no @Bean
+    @Qualifier("motorEletrico") // Tem a função de identificar para o @Autowired qual @Bean de mesmo tipo será utilizado
     private Motor motor;
 
     @PostMapping
