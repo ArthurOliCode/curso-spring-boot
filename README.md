@@ -22,6 +22,6 @@ As dependências utilizadas para os projetos são:
 
   O objetivo desse projeto é aprender as tecnologias já descritas anteriormente, com enfoque teórico
   e prático para o ambiente corporativo, com práticas de organização e manunteção de código, dirigidas
-  pelo professor e profissional <font color="cyan">[Dougllas Sousa](https://www.udemy.com/user/dougllas-sousa/)</font>.
+  pelo professor e profissional <font color="purple">[Dougllas Sousa](https://www.udemy.com/user/dougllas-sousa/)</font>.
 
   Os principais arquivos estão descritos na área `src/main/java/com/example/nome-projeto`.
