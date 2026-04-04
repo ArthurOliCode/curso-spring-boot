@@ -1,6 +1,6 @@
-Curso profissionalizante para desenvolvimento com Spring Boot.
+# Curso profissionalizante para desenvolvimento com Spring Boot.
 
-Seguintes tecnologias serão utilizadas:
+###Seguintes tecnologias serão utilizadas:
 
 - JPA
 - REST
