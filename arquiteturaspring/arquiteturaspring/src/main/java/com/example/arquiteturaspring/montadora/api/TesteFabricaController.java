@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/carros")
 public class TesteFabricaController {
 
-    @Autowired // Auto-gestão do Spring com container e dependências no @Bean
-    @Qualifier("motorEletrico") // Tem a função de identificar para o @Autowired qual @Bean de mesmo tipo será utilizado
+    @Autowired // Auto-gestão do Spring com container e dependências no @Bean.
+    // @Qualifier("motorEletrico") --> Tem a função de identificar para o @Autowired qual @Bean de mesmo tipo será utilizado.
+    @Turbo // Annotation personalizada para definir o tipo de motor, fazendo uma injeção de dependência. 
     private Motor motor;
 
     @PostMapping
