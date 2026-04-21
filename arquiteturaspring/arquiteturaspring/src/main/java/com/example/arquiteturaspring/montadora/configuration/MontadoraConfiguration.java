@@ -2,6 +2,7 @@ package com.example.arquiteturaspring.montadora.configuration;
 
 import com.example.arquiteturaspring.montadora.Motor;
 import com.example.arquiteturaspring.montadora.TipoMotor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -11,10 +12,12 @@ public class MontadoraConfiguration {
 
 
     @Bean(name = "motorAspirado")
-    public Motor motorAspirado(){
+    public Motor motorAspirado(
+            @Value("${app.montadora.motor-padrao}") Integer cavalos,
+            @Value("${app.montadora.cilindro-padrao}") Integer cilindros){
         var motor = new Motor();
-        motor.setCavalos(120);
-        motor.setCilindros(4);
+        motor.setCavalos(cavalos);
+        motor.setCilindros(cilindros);
         motor.setLitragem(2.0);
         motor.setModelo("Hamzd-1");
         motor.setTipo(TipoMotor.ASPIRADO);

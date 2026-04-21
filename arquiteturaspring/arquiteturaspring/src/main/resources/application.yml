@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Arquitetura Spring
+# Shift + tab --> retorna um nível
+  jpa:
+    show-sql: true
+  main:
+    laze-initialization: false
+
+# Configurancões personalizadas
+app:
+  montadora:
+    motor-padrao: 130
+    cilindro-padrao: 4
+  config:
+    variavel: Valor da variavel --> X
+    valor-B: 450
