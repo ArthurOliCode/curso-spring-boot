@@ -48,6 +48,29 @@ As dependências utilizadas para os projetos são:
 - REpository --> responsável pelas operações para com o Banco de dados, através de interfaces.
 - Banco de dados (Temporário/Real) --> Armazena os dados, tabelas 
 
+### Utiização
+
+1. Clone o Repositório
+   `bash
+   git clone https://github.com/ArthurOliCode/curso-spring-boot.git
+   `
+3. Entre na pasta do projeto
+   `bash
+   cd curso-spring-boot`
+5. Execute a aplicação
+   `./mvnw clean package
+   java -jar target/projeto.jar`
+
+### Endpoints
+
+| Método | Endpoint          | Descrição                        |
+| :----- | :---------------- | :------------------------------- |
+| GET    | `/api/todos`      | Retorna todas as tarefas         |
+| GET    | `/api/todos/{id}` | Retorna uma tarefa específica    |
+| POST   | `/api/todos`      | Cria uma nova tarefa             |
+| PUT    | `/api/todos/{id}` | Atualiza uma tarefa existente    |
+| DELETE | `/api/todos/{id}` | Remove uma tarefa do sistema     |
+
 ---
 
 O objetivo desse projeto é aprender as tecnologias já descritas anteriormente, com enfoque teórico
