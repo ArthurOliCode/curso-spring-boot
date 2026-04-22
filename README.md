@@ -1,6 +1,21 @@
 # Curso profissionalizante para desenvolvimento com Spring Boot.
 
-### Seguintes tecnologias serão utilizadas:
+### Próposito
+ Esse repositório tem o objetivo de tornar o aluno familiarizado com as tecnologias
+ que englobam o desenvlvimento em Spring Boot, de tal maneira que possa atuar no mercado
+ de trabalho.
+ 
+ De forma fundamental a prática é exercida junto a teoria, assim durante as aulas, 
+ o conceitual é exercido pelos exemplos de preparação para o mercado de trabalho e 
+ exemplificação do teórico pela prática.
+ 
+ Além disso, práticas de organização e estruturação de código são repassadas, para 
+ que assim, o aluno possa aplicar o aprendizado da melhor maneira possível quando
+ estiver em atuação. Servindo também, como guia para aqueles que desejam aprender 
+ com o repositório, ou tomá-lo como base.
+
+ 
+### Tecnologias:
 
 - JPA
 - REST
@@ -23,6 +38,15 @@ As dependências utilizadas para os projetos são:
 - com.h2database
 - Java 25
 - Postman
+
+### Fluxo de controle:
+
+#### Modelo de arquiterua MVC:
+
+- Rest Controller (API) --> gerencia todas as dependências HTTP
+- Service --> Camada lógica da aplicação
+- REpository --> responsável pelas operações para com o Banco de dados, através de interfaces.
+- Banco de dados (Temporário/Real) --> Armazena os dados, tabelas 
 
 ---
 
