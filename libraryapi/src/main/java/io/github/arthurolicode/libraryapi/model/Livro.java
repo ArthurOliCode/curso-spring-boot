@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.UUID;
 
 @Entity
@@ -25,7 +26,7 @@ public class Livro {
     private String titulo;
 
     @Column(name = "data_publicacao", nullable = false)
-    private LocalDate datedataPublicacao;
+    private LocalDate dataPublicacao;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "genero", length = 30, nullable = false)
@@ -36,5 +37,5 @@ public class Livro {
 
     @ManyToOne
     @JoinColumn(name = "id_autor")
-    private Autor idAutor;
+    private Autor autor;
 }

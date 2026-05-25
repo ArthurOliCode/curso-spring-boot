@@ -15,7 +15,7 @@ import java.util.UUID;
 public class AutorRepositoryTest {
 
     @Autowired // Injeção do repository
-    AutorRepository repository = null;
+    AutorRepository repository;
 
     @Test // Torna o código executável
     public void salvarAutorTest(){
