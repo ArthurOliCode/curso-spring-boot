@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.UUID;
 import java.math.BigDecimal;
 
 @Entity
-public class OrdemItens {
+public class ItemPedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -18,8 +18,8 @@ public class OrdemItens {
     @Column(name = "preco", precision = 18, scale = 2)
     private BigDecimal preco;
 
-//    @ManyToOne
-//    private Order order;
+    @ManyToOne
+    private Pedido pedido;
 
     @ManyToOne
     private IceCream iceCream;

@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
 
-@SpringBootTest
+@SpringBootTest 
 class LivroRepositoryTest {
 
     @Autowired
@@ -31,6 +31,50 @@ class LivroRepositoryTest {
         livro.setDataPublicacao(LocalDate.of(1980, 3, 1));
 
         Autor autor =  autorRepository.findById(UUID.fromString("3399985b-5b80-4c09-be95-56dd3e6ec9dc")).orElse(null);
+
+        livro.setAutor(autor);
+
+        repository.save(livro);
+
+
+    }
+
+    @Test
+    void salvarLivroEAutor(){
+        Livro livro = new Livro();
+        livro.setIsdn("234214-93204");
+        livro.setGenero(GeneroLivro.FANTASIA);
+        livro.setPreco(BigDecimal.valueOf(200));
+        livro.setTitulo("As viagens de Marta");
+        livro.setDataPublicacao(LocalDate.of(1980, 3, 1));
+
+        Autor autor = new Autor();
+        autor.setNome("Maria");
+        autor.setNacionalidade("Brasileira");
+        autor.setDataNascimento(LocalDate.of(1990, 4, 30));
+
+        autorRepository.save(autor);
+
+        livro.setAutor(autor);
+
+        repository.save(livro);
+
+
+    }
+
+    @Test
+    void salvarLivroCascade(){
+        Livro livro = new Livro();
+        livro.setIsdn("234214-93204");
+        livro.setGenero(GeneroLivro.CIENCIA);
+        livro.setPreco(BigDecimal.valueOf(125));
+        livro.setTitulo("Lombok");
+        livro.setDataPublicacao(LocalDate.of(1980, 3, 1));
+
+        Autor autor = new Autor();
+        autor.setNome("José");
+        autor.setNacionalidade("Brasileiro");
+        autor.setDataNascimento(LocalDate.of(1980, 11, 21));
 
         livro.setAutor(autor);
 
