@@ -1,12 +1,16 @@
 package io.github.arthurolicode.libraryapi.repository;
 
 import io.github.arthurolicode.libraryapi.model.Autor;
+import io.github.arthurolicode.libraryapi.model.GeneroLivro;
+import io.github.arthurolicode.libraryapi.model.Livro;
 import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -16,6 +20,9 @@ public class AutorRepositoryTest {
 
     @Autowired // Injeção do repository
     AutorRepository repository;
+
+    @Autowired
+    LivroRepository livroRepository; // repository do livro --  método: void salvarAutorComLivros()
 
     @Test // Torna o código executável
     public void salvarAutorTest(){
@@ -88,5 +95,39 @@ public class AutorRepositoryTest {
             repository.delete(fabioM); // Esse modo, deleta o objeto, ou seja a entidade em si.
             System.out.println("Usuário deletado!");
         }
+    }
+
+    @Test
+    void salvarAutorComLivros(){
+        Autor autor = new Autor();
+        autor.setNome("Paulo Guimarães");
+        autor.setNacionalidade("Brasileira");
+        autor.setDataNascimento(LocalDate.of(1869, 4, 16));
+
+
+        Livro livro = new Livro();
+        livro.setTitulo("O roubo da casa ao lado");
+        livro.setIsdn("424235-93204");
+        livro.setGenero(GeneroLivro.MISTERIO);
+        livro.setPreco(BigDecimal.valueOf(164));
+        livro.setDataPublicacao(LocalDate.of(1889, 10, 30));
+        livro.setAutor(autor);
+
+        Livro livro2 = new Livro();
+        livro2.setTitulo("Martes, montes e mortes");
+        livro2.setIsdn("491658-93232");
+        livro2.setGenero(GeneroLivro.MISTERIO);
+        livro2.setPreco(BigDecimal.valueOf(192));
+        livro2.setDataPublicacao(LocalDate.of(1910, 5, 12));
+        livro2.setAutor(autor);
+
+        autor.setLivros(new ArrayList<>());
+        autor.getLivros().add(livro);
+        autor.getLivros().add(livro2);
+
+        repository.save(autor);
+        livroRepository.saveAll(autor.getLivros());
+
+
     }
 }

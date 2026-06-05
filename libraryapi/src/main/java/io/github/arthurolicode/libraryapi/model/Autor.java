@@ -30,8 +30,8 @@ public class Autor {
     @Column(name = "nacionalidade", length = 50, nullable = false)
     private String nacionalidade;
 
-//    @OneToMany(mappedBy = "idAutor")
-    @Transient // Desconsidera a propriedade como uma coluna, a tornando transiente.
+    @OneToMany(mappedBy = "autor")
+//    @Transient - Desconsidera a propriedade como uma coluna, a tornando transiente.
     private List<Livro> livros;
 
 //    @Deprecated
