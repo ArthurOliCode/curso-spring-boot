@@ -7,8 +7,10 @@ import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -126,7 +128,23 @@ public class AutorRepositoryTest {
         autor.getLivros().add(livro2);
 
         repository.save(autor);
-        livroRepository.saveAll(autor.getLivros());
+//        livroRepository.saveAll(autor.getLivros()); --> Forma manual, caso não tenha cascade para salva ambas as entidades.
+    }
+
+    @Test
+//    @Transactional
+    void listarLivrosAutor(){
+        UUID id = UUID.fromString("40828e45-7ffe-41a5-93ae-f27e750d0633");
+        var autor = repository.findById(id).orElse(null);
+
+//      Buscar os livros do autor através de um Query Method
+//      A forma correta de se consultar é com um Query Method ao invés de utilizar o Eager ou Transactional nessas situações.
+//      para não quebrar a Database.
+
+        List<Livro> livrosLista = livroRepository.findByAutor(autor);
+        autor.setLivros(livrosLista);
+
+        autor.getLivros().forEach(System.out::println);
 
 
     }
