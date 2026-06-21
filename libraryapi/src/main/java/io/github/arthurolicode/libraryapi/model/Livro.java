@@ -5,7 +5,6 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Optional;
 import java.util.UUID;
 
 @Entity
@@ -20,8 +19,8 @@ public class Livro {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "isdn", length = 20, nullable = false)
-    private String isdn;
+    @Column(name = "isbn", length = 20, nullable = false)
+    private String isbn;
 
     @Column(name = "titulo", length = 150, nullable = false)
     private String titulo;

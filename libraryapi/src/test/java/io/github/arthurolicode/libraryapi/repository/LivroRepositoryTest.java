@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @SpringBootTest 
@@ -26,7 +25,7 @@ class LivroRepositoryTest {
     @Test
     void salvarLivro(){
         Livro livro = new Livro();
-        livro.setIsdn("234214-93204");
+        livro.setIsbn("234214-93204");
         livro.setGenero(GeneroLivro.MISTERIO);
         livro.setPreco(BigDecimal.valueOf(125));
         livro.setTitulo("Gone");
@@ -44,7 +43,7 @@ class LivroRepositoryTest {
     @Test
     void salvarLivroEAutor(){
         Livro livro = new Livro();
-        livro.setIsdn("234214-93204");
+        livro.setIsbn("234214-93204");
         livro.setGenero(GeneroLivro.FANTASIA);
         livro.setPreco(BigDecimal.valueOf(200));
         livro.setTitulo("As viagens de Marta");
@@ -67,7 +66,7 @@ class LivroRepositoryTest {
     @Test
     void salvarLivroCascade(){
         Livro livro = new Livro();
-        livro.setIsdn("234214-93204");
+        livro.setIsbn("234214-93204");
         livro.setGenero(GeneroLivro.CIENCIA);
         livro.setPreco(BigDecimal.valueOf(125));
         livro.setTitulo("Lombok");
@@ -131,13 +130,13 @@ class LivroRepositoryTest {
 
     @Test
     void pesquisaPorTituloTest(){
-        List<Livro> lista = repository.findByTitulo("As viagens de Marta");
+        List<Livro> lista = repository.findByTituloOrderByTitulo("As viagens de Marta");
         lista.forEach(System.out::println);
     }
 
     @Test
-    void pesquisaPorIsdnTest(){
-        List<Livro> lista = repository.findByIsdn("424235-93204");
+    void pesquisaPorIsbnTest(){
+        List<Livro> lista = repository.findByIsbn("424235-93204");
         lista.forEach(System.out::println);
     }
 
@@ -146,17 +145,34 @@ class LivroRepositoryTest {
         var preco = BigDecimal.valueOf(192.00);
         var titulo = "Martes, montes e mortes";
 
-        List<Livro> lista = repository.findByTituloAndPreco(titulo, preco);
+        List<Livro> lista = repository.findByTituloAndPrecoOrderByTitulo(titulo, preco);
         lista.forEach(System.out::println);
     }
 
     @Test
-    void pesquisaPorTituloOrIsdn(){
+    void pesquisaPorTituloOrIsbn(){
         var titulo = "";
-        var isdn = "234214-93204";
+        var isbn = "234214-93204";
 
-        List<Livro> lista = repository.findByTituloOrIsdn(titulo, isdn);
+        List<Livro> lista = repository.findByTituloOrIsbnOrderByTitulo(titulo, isbn);
         lista.forEach(System.out::println);
     }
+
+    @Test
+    void pesquisarPorTituloComo(){
+        var titulo = "%%";
+
+        List<Livro> lista = repository.findByTituloLikeOrderByTitulo(titulo);
+        lista.forEach(System.out::println);
+    }
+
+    @Test
+    void pesquisarPorGenero(){
+        GeneroLivro generoLivro =  GeneroLivro.MISTERIO;
+
+        List<Livro> lista = repository.findByGenero(generoLivro);
+        lista.forEach(System.out::println);
+    }
+
 
 }

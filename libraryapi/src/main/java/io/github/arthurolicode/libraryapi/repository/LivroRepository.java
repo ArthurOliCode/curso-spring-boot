@@ -1,6 +1,7 @@
 package io.github.arthurolicode.libraryapi.repository;
 
 import io.github.arthurolicode.libraryapi.model.Autor;
+import io.github.arthurolicode.libraryapi.model.GeneroLivro;
 import io.github.arthurolicode.libraryapi.model.Livro;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -12,14 +13,17 @@ public interface LivroRepository extends JpaRepository<Livro, UUID> {
 
     //Query Method
 //    Select * from livro where id_autor = id
-    List<Livro> findByAutor(Autor autor);
+    List<Livro> findByAutorOrderByAutor(Autor autor);
 
-    List<Livro> findByTitulo(String titulo);
+    List<Livro> findByTituloOrderByTitulo(String titulo);
 
-    List<Livro> findByIsdn(String isdn);
+    List<Livro> findByIsbn(String isbn);
 
-    List<Livro> findByTituloAndPreco(String titulo, BigDecimal preco);
+    List<Livro> findByTituloAndPrecoOrderByTitulo(String titulo, BigDecimal preco);
 
-    List<Livro> findByTituloOrIsdn(String titulo, String isdn);
+    List<Livro> findByTituloOrIsbnOrderByTitulo(String titulo, String isbn);
 
+    List<Livro> findByTituloLikeOrderByTitulo(String titulo);
+
+    List<Livro> findByGenero(GeneroLivro genero);
 }

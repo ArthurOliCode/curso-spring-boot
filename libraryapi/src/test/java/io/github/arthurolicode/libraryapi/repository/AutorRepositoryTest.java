@@ -3,14 +3,11 @@ package io.github.arthurolicode.libraryapi.repository;
 import io.github.arthurolicode.libraryapi.model.Autor;
 import io.github.arthurolicode.libraryapi.model.GeneroLivro;
 import io.github.arthurolicode.libraryapi.model.Livro;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -109,7 +106,7 @@ public class AutorRepositoryTest {
 
         Livro livro = new Livro();
         livro.setTitulo("O roubo da casa ao lado");
-        livro.setIsdn("424235-93204");
+        livro.setIsbn("424235-93204");
         livro.setGenero(GeneroLivro.MISTERIO);
         livro.setPreco(BigDecimal.valueOf(164));
         livro.setDataPublicacao(LocalDate.of(1889, 10, 30));
@@ -117,7 +114,7 @@ public class AutorRepositoryTest {
 
         Livro livro2 = new Livro();
         livro2.setTitulo("Martes, montes e mortes");
-        livro2.setIsdn("491658-93232");
+        livro2.setIsbn("491658-93232");
         livro2.setGenero(GeneroLivro.MISTERIO);
         livro2.setPreco(BigDecimal.valueOf(192));
         livro2.setDataPublicacao(LocalDate.of(1910, 5, 12));
@@ -141,7 +138,7 @@ public class AutorRepositoryTest {
 //      A forma correta de se consultar é com um Query Method ao invés de utilizar o Eager ou Transactional nessas situações.
 //      para não quebrar a Database.
 
-        List<Livro> livrosLista = livroRepository.findByAutor(autor);
+        List<Livro> livrosLista = livroRepository.findByAutorOrderByAutor(autor);
         autor.setLivros(livrosLista);
 
         autor.getLivros().forEach(System.out::println);
