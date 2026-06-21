@@ -13,6 +13,10 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * @see LivroRepository
+ */
+
 @SpringBootTest 
 class LivroRepositoryTest {
 
@@ -174,5 +178,40 @@ class LivroRepositoryTest {
         lista.forEach(System.out::println);
     }
 
+    @Test
+    void listarLivrosJPQL(){
+        var resultados = repository.listarLivros();
+        resultados.forEach(System.out::println);
+    }
 
+    @Test
+    void listarAutoresJPQL(){
+        var autores = repository.listarAutoresdosLivros();
+        autores.forEach(System.out::println);
+    }
+
+    @Test
+    void listarTitulosJPQL(){
+        var titulos = repository.listarTituloLivros();
+        titulos.forEach(System.out::println);
+    }
+
+    @Test
+    void listarGeneroAutoresBrasileiros(){
+        var generos = repository.listarGenerosAtuoresBrasileiros();
+        generos.forEach(System.out::println);
+    }
+
+//    Named Parameters -> Parâmetros que são nomeados
+    @Test
+    void buscarGeneroLivrosQueryParam(){
+        var generos = repository.findByGeneroQueryParam(GeneroLivro.MISTERIO, "preco");
+        generos.forEach(System.out::println);
+    }
+
+    @Test
+    void buscarGeneroLivrosPosParam(){
+        var generos = repository.findByGeneroPosParam(GeneroLivro.MISTERIO, "preco");
+        generos.forEach(System.out::println);
+    }
 }

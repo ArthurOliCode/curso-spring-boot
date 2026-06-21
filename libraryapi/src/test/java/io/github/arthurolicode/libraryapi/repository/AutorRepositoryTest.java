@@ -14,6 +14,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * @see AutorRepository
+ */
+
 @SpringBootTest // Ele torna a classe capaz de realizar as mesma ações de uma Application
 public class AutorRepositoryTest {
 
@@ -26,9 +30,9 @@ public class AutorRepositoryTest {
     @Test // Torna o código executável
     public void salvarAutorTest(){
         Autor autor = new Autor();
-        autor.setNome("Fábio M.");
+        autor.setNome("Maria Mortris");
         autor.setNacionalidade("Brasileira");
-        autor.setDataNascimento(LocalDate.of(1956, 9, 21));
+        autor.setDataNascimento(LocalDate.of(1989, 8, 20));
 
         var autorsalvo = repository.save(autor);
         System.out.println("Autor salvo: " + autorsalvo);
@@ -99,9 +103,9 @@ public class AutorRepositoryTest {
     @Test
     void salvarAutorComLivros(){
         Autor autor = new Autor();
-        autor.setNome("Paulo Guimarães");
+        autor.setNome("Maria Mortris");
         autor.setNacionalidade("Brasileira");
-        autor.setDataNascimento(LocalDate.of(1869, 4, 16));
+        autor.setDataNascimento(LocalDate.of(1989, 8, 20));
 
 
         Livro livro = new Livro();
@@ -144,5 +148,11 @@ public class AutorRepositoryTest {
         autor.getLivros().forEach(System.out::println);
 
 
+    }
+
+    @Test
+    void listarAutoresJPQL(){
+        var lista = repository.listarAutores();
+        lista.forEach(System.out::println);
     }
 }
