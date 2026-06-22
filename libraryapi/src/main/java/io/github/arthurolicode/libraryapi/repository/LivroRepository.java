@@ -4,8 +4,10 @@ import io.github.arthurolicode.libraryapi.model.Autor;
 import io.github.arthurolicode.libraryapi.model.GeneroLivro;
 import io.github.arthurolicode.libraryapi.model.Livro;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -61,4 +63,19 @@ public interface LivroRepository extends JpaRepository<Livro, UUID> {
 //    Positional Parameters --> Parâmetros por posição, são melhores para consultas curtas
     @Query(" select l from Livro l where l.genero = ?1 order by ?2")
     List<Livro> findByGeneroPosParam(GeneroLivro generoLivro, String preco);
+
+    @Modifying
+    @Transactional
+    @Query(" delete from Livro l where l.genero = ?1")
+    void deleteByGenero(GeneroLivro generoLivro);
+
+    @Modifying
+    @Transactional
+    @Query(" update Livro set genero = ?1 where isbn = ?2 or titulo = ?3")
+    void updateGeneroLivro(GeneroLivro generoLivro, String isbn, String titulo);
+
+    @Modifying
+    @Transactional
+    @Query(" update Livro set isbn = ?1 where titulo = ?2")
+    void updateIsbn(String isbn, String titulo);
 }

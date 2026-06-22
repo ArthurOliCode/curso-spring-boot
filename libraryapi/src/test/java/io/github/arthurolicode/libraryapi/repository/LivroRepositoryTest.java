@@ -214,4 +214,26 @@ class LivroRepositoryTest {
         var generos = repository.findByGeneroPosParam(GeneroLivro.MISTERIO, "preco");
         generos.forEach(System.out::println);
     }
+
+    @Test
+    void deletarPorGenero(){
+        repository.deleteByGenero(GeneroLivro.CIENCIA);
+    }
+
+    @Test
+    void updateGeneroLivro(){
+        GeneroLivro genero_novo = GeneroLivro.ROMANCE;
+        var isbn = "";
+        var titulo = "Martes, montes e mortes";
+
+        repository.updateGeneroLivro(genero_novo, isbn, titulo );
+    }
+
+    @Test
+    void updateIsbn(){
+        var titulo = "Maremotriz";
+        var isbn = "352332-42371";
+
+        repository.updateIsbn(isbn, titulo);
+    }
 }

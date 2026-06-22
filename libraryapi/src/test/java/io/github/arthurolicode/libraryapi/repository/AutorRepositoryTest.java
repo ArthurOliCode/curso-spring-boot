@@ -103,25 +103,25 @@ public class AutorRepositoryTest {
     @Test
     void salvarAutorComLivros(){
         Autor autor = new Autor();
-        autor.setNome("Maria Mortris");
+        autor.setNome("Marta Gisele");
         autor.setNacionalidade("Brasileira");
-        autor.setDataNascimento(LocalDate.of(1989, 8, 20));
+        autor.setDataNascimento(LocalDate.of(1992, 4, 10));
 
 
         Livro livro = new Livro();
-        livro.setTitulo("O roubo da casa ao lado");
-        livro.setIsbn("424235-93204");
-        livro.setGenero(GeneroLivro.MISTERIO);
+        livro.setTitulo("Amor olímpico");
+        livro.setIsbn("408475-23234");
+        livro.setGenero(GeneroLivro.CIENCIA);
         livro.setPreco(BigDecimal.valueOf(164));
-        livro.setDataPublicacao(LocalDate.of(1889, 10, 30));
+        livro.setDataPublicacao(LocalDate.of(2022, 11, 2));
         livro.setAutor(autor);
 
         Livro livro2 = new Livro();
-        livro2.setTitulo("Martes, montes e mortes");
+        livro2.setTitulo("Maremotriz");
         livro2.setIsbn("491658-93232");
-        livro2.setGenero(GeneroLivro.MISTERIO);
+        livro2.setGenero(GeneroLivro.FICCAO);
         livro2.setPreco(BigDecimal.valueOf(192));
-        livro2.setDataPublicacao(LocalDate.of(1910, 5, 12));
+        livro2.setDataPublicacao(LocalDate.of(2020, 9, 13));
         livro2.setAutor(autor);
 
         autor.setLivros(new ArrayList<>());
